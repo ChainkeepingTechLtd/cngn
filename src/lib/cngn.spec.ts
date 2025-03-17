@@ -6,7 +6,7 @@ import proxyquire from 'proxyquire';
 // Instead of modifying the existing export, we provide a fake implementation
 // that simply returns the encrypted data as "decrypted" for testing purposes.
 const fakeEdUtils = {
-  createEd25519CryptoUtils: async (modifier?: string) => ({
+  createEd25519CryptoUtils: async (_modifier?: string) => ({
     decryptWithPrivateKey: async (_privateKey: string, encryptedData: string) =>
       encryptedData,
   }),

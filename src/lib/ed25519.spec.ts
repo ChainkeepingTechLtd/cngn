@@ -8,17 +8,17 @@ import proxyquire from 'proxyquire';
 const fakeSodium = {
   ready: Promise.resolve(),
   // For testing, simply return a fixed buffer regardless of input.
-  crypto_sign_ed25519_sk_to_curve25519: (sk: Uint8Array) =>
+  crypto_sign_ed25519_sk_to_curve25519: (_sk: Uint8Array) =>
     Buffer.from('dummyCurveKey'),
   // Set fixed nonce/publickey lengths.
   crypto_box_NONCEBYTES: 24,
   crypto_box_PUBLICKEYBYTES: 32,
   // For testing, simulate decryption by always returning a buffer that converts to 'decrypted text'
   crypto_box_open_easy: (
-    ciphertext: Buffer,
-    nonce: Buffer,
-    ephemeralPublicKey: Buffer,
-    curveKey: Buffer
+    _ciphertext: Buffer,
+    _nonce: Buffer,
+    _ephemeralPublicKey: Buffer,
+    _curveKey: Buffer
   ) => Buffer.from('decrypted text'),
   to_string: (buf: Buffer) => buf.toString('utf8'),
 };
