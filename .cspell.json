@@ -23,6 +23,13 @@
     "cngn",
     "chainkeeping",
     "typedoc",
+    "ciphertext",
+    "XORs",
+    "CUST",
+    "publickey",
+    "NONCEBYTES",
+    "libsodium",
+    "PUBLICKEYBYTES",
     "untracked"
   ],
   "flagWords": [],

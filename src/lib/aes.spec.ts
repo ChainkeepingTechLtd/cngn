@@ -19,7 +19,7 @@ test('round-trip encryption/decryption without modifier', (t) => {
 });
 
 test('round-trip encryption/decryption with modifier', (t) => {
-  const cryptoUtils = createCryptoUtils('myEncryptionKey', 'modifier');
+  const cryptoUtils = createCryptoUtils('myEncryptionKey');
   const originalText = 'Test string for encryption';
 
   const encrypted = cryptoUtils.encryptData(originalText);
@@ -35,7 +35,7 @@ test('round-trip encryption/decryption with modifier', (t) => {
 });
 
 test('encryption produces different outputs on successive calls', (t) => {
-  const cryptoUtils = createCryptoUtils('myEncryptionKey', 'modifier');
+  const cryptoUtils = createCryptoUtils('myEncryptionKey');
   const originalText = 'Same text';
 
   const encrypted1 = cryptoUtils.encryptData(originalText);

@@ -21,7 +21,6 @@ import { createEd25519CryptoUtils } from './ed25519';
  *     apiVersion: 'v1',
  *     apiKey: 'YOUR_API_KEY',
  *     encryptionKey: 'YOUR_ENCRYPTION_KEY', // required for both encryption and decryption
- *     encryptionModifier: 'OPTIONAL_MODIFIER',
  *     errorHandler: (error) => console.error("API error:", error)
  *   });
  *   try {
@@ -42,7 +41,6 @@ import { createEd25519CryptoUtils } from './ed25519';
  *     apiVersion: 'v1',
  *     apiKey: 'YOUR_API_KEY',
  *     encryptionKey: 'YOUR_ENCRYPTION_KEY',
- *     encryptionModifier: 'OPTIONAL_MODIFIER',
  *     errorHandler: (error) => console.error("API error:", error)
  *   });
  *   try {
@@ -78,10 +76,7 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
   const axiosInstance: AxiosInstance = axios.create(mergedConfig);
 
   // Initialize AES crypto utilities.
-  const cryptoUtils = createCryptoUtils(
-    config.encryptionKey,
-    config.encryptionModifier
-  );
+  const cryptoUtils = createCryptoUtils(config.encryptionKey);
 
   /**
    * Formats raw API response data into a standardized structure.
@@ -171,7 +166,7 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
   ): Promise<any> => {
     try {
       const response = await axiosInstance.get(endpoint, configOverride);
-      const edUtils = await createEd25519CryptoUtils(config.encryptionModifier);
+      const edUtils = await createEd25519CryptoUtils();
       return {
         ...response.data,
         data: JSON.parse(
@@ -219,7 +214,7 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
         encryptedPayload,
         configOverride
       );
-      const edUtils = await createEd25519CryptoUtils(config.encryptionModifier);
+      const edUtils = await createEd25519CryptoUtils();
       return {
         ...response.data,
         data: JSON.parse(
@@ -413,7 +408,6 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
     updateExternalAccounts,
     getBanks,
     swapAsset,
-    // Optionally expose the raw get and post helpers.
     get,
     post,
   };

@@ -10,8 +10,8 @@ import { EncryptedData } from './aes';
  * @property encryptionKey - A required key used for both encryption and decryption.
  * @property errorHandler - Optional custom error handler for Axios errors.
  * @property axiosConfig - Additional Axios configuration options.
- * @property encryptionModifier - Optional modifier to adjust the random IV.
  */
+// eslint-disable-next-line functional/no-mixed-type
 export type CngnApiClientConfig = {
   readonly apiVersion: string;
   readonly apiKey: string;
@@ -19,7 +19,6 @@ export type CngnApiClientConfig = {
   // eslint-disable-next-line functional/no-return-void
   readonly errorHandler?: (error: AxiosError) => void;
   readonly axiosConfig?: AxiosRequestConfig;
-  readonly encryptionModifier?: string;
 };
 
 /**
@@ -71,7 +70,6 @@ export type FormattedResponse = {
  *   apiVersion: 'v1',
  *   apiKey: 'YOUR_API_KEY',
  *   encryptionKey: 'YOUR_ENCRYPTION_KEY',
- *   encryptionModifier: 'OPTIONAL_MODIFIER'
  * });
  * client.ping().then(console.log);
  * ```
@@ -82,7 +80,6 @@ export type FormattedResponse = {
  *   apiVersion: 'v1',
  *   apiKey: 'YOUR_API_KEY',
  *   encryptionKey: 'YOUR_ENCRYPTION_KEY',
- *   encryptionModifier: 'OPTIONAL_MODIFIER'
  * });
  * client.getStatus().then(console.log);
  * ```

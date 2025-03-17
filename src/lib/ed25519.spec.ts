@@ -65,7 +65,7 @@ test('decryptWithPrivateKey returns decrypted text for valid key and data', asyn
     'base64'
   );
 
-  const edUtils = await createEd25519CryptoUtils('optionalModifier');
+  const edUtils = await createEd25519CryptoUtils();
   const result = await edUtils.decryptWithPrivateKey(
     validKey,
     dummyEncryptedData
