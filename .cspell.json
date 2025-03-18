@@ -29,6 +29,7 @@
     "publickey",
     "NONCEBYTES",
     "libsodium",
+    "reqheaders",
     "PUBLICKEYBYTES",
     "untracked"
   ],
