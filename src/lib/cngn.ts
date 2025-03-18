@@ -399,6 +399,8 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
   };
 
   return {
+    formatApiError,
+    formatApiResponse,
     getBalance,
     getTransactionHistory,
     withdraw,
