@@ -13,9 +13,9 @@ import { EncryptedData } from './aes';
  */
 // eslint-disable-next-line functional/no-mixed-type
 export type CngnApiClientConfig = {
-  readonly apiVersion: string;
   readonly apiKey: string;
   readonly encryptionKey: string;
+  readonly privateKey: string;
   // eslint-disable-next-line functional/no-return-void
   readonly errorHandler?: (error: AxiosError) => void;
   readonly axiosConfig?: AxiosRequestConfig;

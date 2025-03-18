@@ -57,7 +57,7 @@ import { createEd25519CryptoUtils } from './ed25519';
  */
 export const createCngnApiClient = (config: CngnApiClientConfig) => {
   const forcedConfig: AxiosRequestConfig = {
-    baseURL: `https://api.cngn.co/${config.apiVersion}/api`,
+    baseURL: `https://api.cngn.co/v1/api`,
     headers: {
       Authorization: `Bearer ${config.apiKey}`,
       'Content-Type': 'application/json',
@@ -171,7 +171,7 @@ export const createCngnApiClient = (config: CngnApiClientConfig) => {
         ...response.data,
         data: JSON.parse(
           await edUtils.decryptWithPrivateKey(
-            config.encryptionKey,
+            config.privateKey,
             response.data.data
           )
         ),
